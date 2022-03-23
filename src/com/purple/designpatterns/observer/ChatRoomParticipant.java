@@ -10,6 +10,14 @@ public class ChatRoomParticipant implements ChatRoomObserver {
 	
 	private List<String> messages;
 	
+	public List<String> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<String> messages) {
+		this.messages = messages;
+	}
+
 	public ChatRoomParticipant(String userName, ChatRoomConcrete chatRoom) {
 		this.userName = userName;
 		this.chatRoom = chatRoom;
@@ -17,7 +25,7 @@ public class ChatRoomParticipant implements ChatRoomObserver {
 	
 	@Override
 	public void update() {
-		messages = chatRoom.getAllMessages();
+		setMessages(chatRoom.getAllMessages());
 		System.out.println("Chat window for participant - " + userName + " has been updated!");
 	}
 	
