@@ -6,16 +6,14 @@ public class DriverCode {
 		LightBulb garageLight = new LightBulb("Garage light");
 		LightBulb studyLight = new LightBulb("Study light");
 		
-		TurnLightOn turnLightOn = new TurnLightOn(garageLight);
-		turnLightOn.executeCommand();
-		turnLightOn.undoCommand();
-		turnLightOn = new TurnLightOn(studyLight);
-		turnLightOn.executeCommand();
+		LightSwitch garageLightSwitch = new LightSwitch(new TurnLightOff(garageLight), new TurnLightOn(garageLight));
+		LightSwitch studyLightSwitch = new LightSwitch(new TurnLightOff(studyLight), new TurnLightOn(studyLight));
 		
-		TurnLightOff turnLightOff = new TurnLightOff(garageLight);
-		turnLightOff.executeCommand();
-		turnLightOff = new TurnLightOff(studyLight);
-		turnLightOff.executeCommand();
+		garageLightSwitch.switchUp();
+		garageLightSwitch.switchDown();
+		
+		studyLightSwitch.switchUp();
+		studyLightSwitch.switchDown();
 	}
 
 }
